@@ -48,29 +48,51 @@ def movement(x,y,max_x,max_y):
 def happy_matrix():
  	print "this works!"
 # 	#I want user to be able to move up down and left and right
-	hap_mat = [["this is here yyay", "hello", "yup"],["meow", "purr", "hiss"], ["wolf", "howl", "growl"]]
+	hap_mat = [["row1,col1", "ro1 col2", "row1 col3"],
+	["row2col1", "row2 col2", "row2 col3"],
+	 ["row3 col1", "row3 col2", "row3 col3"]]
 	x = 0
 	y = 0
 	while True:
 		#row= x  col = y
 		print hap_mat[x][y]
-		x,y = movement(x,y,2,2)
+		x,y = movement(x,y,2,2) # while  in movement function contiunes here
+		if x == 2 and y == 2:
+			print "end of the line!"
+			break
+#def catch_flies():
+	# What i want this function to do: 
+	# I want to
 
 def sad_matrix():
 	lifepoints = 5
 	puddle = False
-	# row_x = randint(0,3)
-	# col_y = randint(0,3)
-	# sad_mat =  [["what", "is", "happening"],["hello", "there", " !! "],["good ", "bye", "farewell"]]
-	# print sad_mat[row_x][col_y] # this is finding the location and printing it
-	#print "this works!"
-	sad_mat = [[{"text":"stuff1", "puddle": False},{"text": "stuff 2", "puddle": False},{"text":"stuff3", "puddle": False}],
-	[{"text":"stuff4", "puddle": False},{"text":"stuff5", "puddle": False},{"text": "stuff 6", "puddle": False}],
-	[{"text":"stuff7", "puddle": False},{"text": "stuff8", "puddle": False},{"text":"stuff9", "puddle": False}]]
+	sad_mat = [
+	[{"text":"stuff1", "puddle": False},
+	{"text": "stuff 2", "puddle": False, "flies": None},
+	{"text":"stuff3", "puddle": False, "flies": None}],
+
+	[{"text":"stuff4", "puddle": False, "flies": None},
+	{"text":"stuff5", "puddle": False, "flies": None},
+	{"text": "stuff 6", "puddle": False, "flies": None}],
+
+	[{"text":"stuff7", "puddle": False, "flies": None},
+	{"text": "stuff8", "puddle": False, "flies": None},
+	{"text":"stuff9", "puddle": False, "flies": None}]
+	]
+
+	#for location on matrix
 	for i in range(4):
 		x = randint(0,2)
 		y = randint(0,2)
 		sad_mat[x][y]["puddle"] = True
+	
+# for flies value
+	for lst in sad_mat:
+		for element in lst:
+			element["flies"] = randint(0,3)
+
+
 
 	#random  square
 	print "You roll two random dice to figure out where your headed"
