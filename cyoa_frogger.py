@@ -21,7 +21,7 @@ def intro_choice():
 	return choice
 def movement(x,y,max_x,max_y):
 	while True:
-		direction = raw_input("left, right, up, down ")
+		direction = raw_input("left, right, up, down, or stop ")
 
 		if direction == "right" and  y != max_y:
 			y += 1
@@ -36,8 +36,12 @@ def movement(x,y,max_x,max_y):
 		elif direction == "up" and x != 0:
 			x -= 1
 			break
+		elif direction == "stop":
+			print "stopping game"
+			exit()
 		else:
 			print "thats not a valid choice"
+			
 	return (x,y) #tuple
 
 
