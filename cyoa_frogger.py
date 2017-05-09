@@ -62,33 +62,43 @@ def sad_matrix():
 	#print "this works!"
 	sad_mat = [[{"text":"stuff1", "puddle": False},{"text": "stuff 2", "puddle": False},{"text":"stuff3", "puddle": False}],
 	[{"text":"stuff4", "puddle": False},{"text":"stuff5", "puddle": False},{"text": "stuff 6", "puddle": False}],
-	[{},{},{}]]
+	[{"text":"stuff7", "puddle": False},{"text": "stuff8", "puddle": False},{"text":"stuff9", "puddle": False}]]
 	for i in range(4):
-		x = randint(0,3)
-		y = randint(0,3)
+		x = randint(0,2)
+		y = randint(0,2)
 		sad_mat[x][y]["puddle"] = True
 
-	if puddle == True and lifepoints != 0:
-		lifepoints -= 1
-		print  "you have" + lifepoints + " life points left."
-	elif puddle == False and lifepoints != 0:
-		print  "you have" + lifepoints + " life points left."
-	elif lifepoints == 0:
-		print "game over"
-	else:
-		print "something went wrong" 
+	#random  square
+	print "You roll two random dice to figure out where your headed"
+	while True:
+		xx  = randint(0,2)
+		yy = randint(0,2)
+		posistion = sad_mat[xx][yy]
+	 	if posistion["puddle"] == True:
+	 		print "test test"
+	 		break
+	 	else:
+	 		print "it was false"
+	 		continue
+
+
+
+	# if sad_mat["puddle"] == True and lifepoints != 0:
+	# 	lifepoints -= 1
+	# 	print  "you have" + lifepoints + " life points left."
+	# elif sad_mat["puddle"] == False and lifepoints != 0:
+	# 	print  "you have" + lifepoints + " life points left."
+	# elif lifepoints == 0:
+	# 	print "game over"
+	# else:
+	# 	print "something went wrong" 
 
 
 """
 What I want to happen here is I want the user to have a starting life of 5 points
 and every time puddle is true i want life points to go down by 1  and when it hits zero its game over.
 not sure how to connect  it.
-"""
-
-
-
-
-		
+""" 
 
 
 	#calls
