@@ -119,16 +119,17 @@ def sad_matrix():
 	 		print "No Puddle! You do not drown today!"
 	 		
 
+# working on life points
 
-	# if posistion["puddles"] == True and lifepoints != 0:
-	# 	lifepoints -= 1
-	# 	print  "you have" + lifepoints + " life points left."
-	# elif sad_mat["puddle"] == False and lifepoints != 0:
-	# 	print  "you have" + lifepoints + " life points left."
-	# elif lifepoints == 0:
-	# 	print "game over"
-	# else:
-	# 	print "something went wrong" 
+	if posistion["puddles"] == True and lifepoints != 0:
+		lifepoints -= 1
+		print  "you have" + lifepoints + " life points left."
+	elif sad_mat["puddle"] == False and lifepoints != 0:
+		print  "you have" + lifepoints + " life points left."
+	elif lifepoints == 0:
+		print "game over"
+	else:
+		print "something went wrong" 
 
 
 """
