@@ -15,10 +15,13 @@ def intro_choice():
 	choice = raw_input(" 1 or 2? ")
 	choice = int(choice)
 
+
 	
 	# for choice should  keep it like this or should i separate it into another function?
 	# will this allow me to use this  choice later?
 	return choice
+###### choice 1
+
 def movement(x,y,max_x,max_y):
 	while True:
 		direction = raw_input("left, right, up, down, or stop ")
@@ -64,11 +67,13 @@ def happy_matrix():
 	# What i want this function to do: 
 	# I want to
 
+
+##### choice2
 def sad_matrix():
 	lifepoints = 5
 	puddle = False
 	sad_mat = [
-	[{"text":"stuff1", "puddle": False},
+	[{"text":"stuff1", "puddle": False, "flies": None},
 	{"text": "stuff 2", "puddle": False, "flies": None},
 	{"text":"stuff3", "puddle": False, "flies": None}],
 
@@ -90,26 +95,32 @@ def sad_matrix():
 # for flies value
 	for lst in sad_mat:
 		for element in lst:
-			element["flies"] = randint(0,3)
+			element["flies"] = randint(0,2)
 
 
 
 	#random  square
-	print "You roll two random dice to figure out where your headed"
+	print "You jump high in the air not sure where you will land"
 	while True:
 		xx  = randint(0,2)
 		yy = randint(0,2)
 		posistion = sad_mat[xx][yy]
+		jump_again = raw_input("jump again? yes or no ")
+		
+	 # worked on this trying to get it to work
 	 	if posistion["puddle"] == True:
-	 		print "test test"
+	 		print posistion["text"]
+	 		print posistion["flies"]
 	 		break
 	 	else:
 	 		print "it was false"
 	 		continue
 
+# for complete draft ineed lifepoints
+# i need puddles to reduce life 
+# and i need flies to add life.
 
-
-	# if sad_mat["puddle"] == True and lifepoints != 0:
+	# if posistion["puddles"] == True and lifepoints != 0:
 	# 	lifepoints -= 1
 	# 	print  "you have" + lifepoints + " life points left."
 	# elif sad_mat["puddle"] == False and lifepoints != 0:
