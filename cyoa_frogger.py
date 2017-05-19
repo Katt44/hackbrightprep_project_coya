@@ -106,19 +106,19 @@ def sad_matrix():
 		yy = randint(0,2)
 		posistion = sad_mat[xx][yy]
 		jump_again = raw_input("jump again? yes or no ")
-		
-	 # worked on this trying to get it to work
+		jump_again.lower()
+		if jump_again == "no" or jump_again == "n":
+			break	
+	 
 	 	if posistion["puddle"] == True:
 	 		print posistion["text"]
-	 		print posistion["flies"]
+	 		num_flies = posistion["flies"]
+	 		print num_flies
 	 		break
 	 	else:
-	 		print "it was false"
-	 		continue
+	 		print "No Puddle! You do not drown today!"
+	 		
 
-# for complete draft ineed lifepoints
-# i need puddles to reduce life 
-# and i need flies to add life.
 
 	# if posistion["puddles"] == True and lifepoints != 0:
 	# 	lifepoints -= 1
