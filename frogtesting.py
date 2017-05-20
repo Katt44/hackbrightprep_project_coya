@@ -1,4 +1,5 @@
 """ 
+FROGGER@
 Create Your Own Adventure  The Froggeh Story
 this story is mainly made to fill in space and serves the code
 
@@ -70,9 +71,8 @@ def cautious_matrix():
 
 
 ##### choice2
-def wreckless_matrix():
-	lifepoints = 5
-	puddle = False
+def make_wreckless_matrix():
+	
 	wreckless_mat = [
 	[{"text":"stuff1", "puddle": False, "flies": None},
 	{"text": "stuff 2", "puddle": False, "flies": None},
@@ -97,10 +97,14 @@ def wreckless_matrix():
 	for lst in wreckless_mat:
 		for element in lst:
 			element["flies"] = randint(0,2)
+	return wreckless_mat
 
 
-
+def random_user_jump():
 	#random  square
+	puddle = False
+	lifepoints = 5
+	wreckless_mat = make_wreckless_matrix()
 	print "You jump high in the air not sure where you will land"
 	while True:
 		xx  = randint(0,2)
@@ -115,30 +119,48 @@ def wreckless_matrix():
 	 		print posistion["text"]
 	 		num_flies = posistion["flies"]
 	 		print "There are " + str(num_flies) + " flies left."
-	 		
+	 		if num_flies > 0:
+	 			lifepoints = add_flies_to_lifepoints(posistion,lifepoints)	
+	 		lifepoints = check_life_points(posistion,lifepoints)
+	 		if lifepoints <= 0:
+	 			break
 	 	else:
 	 		print "No Puddle! You do not drown today!"
-	 		
+		
 
 # working on life points, almost working
 # I need to connect this to the while loop some how so that the user can jump again
 # and lifepoints are kept track of and shown
 # wow this funct is long
+def check_life_points(position, lifepoints):
+	
+	if posistion["puddle"] == True and lifepoints != 0:
+		lifepoints -= 1
+		print  "you have " + str(lifepoints) + " life points left."
+		print "Jump again!"
+		#return lifepoints
+	elif posistion["puddle"] == False and lifepoints != 0:
+		print  "you have " + str(lifepoints) + " life points left."
+		print "Jump again!"
+	elif lifepoints == 0:
+		print lifepoints
+		print "game over"
+	else:
+		print "something went wrong" 
+	return lifepoints
 
-	# if posistion["puddle"] == True and lifepoints != 0:
-	# 	lifepoints -= 1
-	# 	print  "you have " + str(lifepoints) + " life points left."
-	# 	print "Jump again!"
-	# 	return lifepoints
-	# elif posistion["puddle"] == False and lifepoints != 0:
-	# 	print  "you have " + str(lifepoints) + " life points left."
-	# 	print "Jump again!"
-	# elif lifepoints == 0:
-	# 	print lifepoints
-	# 	print "game over"
-	# else:
-	# 	print "something went wrong" 
+def add_flies_to_lifepoints(wreckless_mat,lifepoints):
+	#FIXME
+	wreckless_mat = make_wreckless_matrix()
+	#lifepoints += life_point_to_give_back_to_user
+	if lifepoints > 5:
+		lifepoints = 5
+	if wreckless_mat["flies"] >= 1:
+		lifepoints += wreckless_mat["flies"]
 
+
+
+	return lifepoints
 
 """
 What I want to happen here is I want the user to have a starting life of 5 points
@@ -160,8 +182,32 @@ def calls():
 
 	else:
 		print "You were dumped for a faster brighter frog that loved water. This filled you with little froggy rage. You decide its a great idea to hunt your girlfriend and your competition down. You want to explain to them in a series of hops and jumps how stupid  they are."
-		wreckless_matrix()
+		random_user_jump()
 	
 
 
-calls()
+#calls()
+
+# let's test stuff
+# wm = make_wreckless_matrix()
+# pos = wm[0][0]
+# print "matrix"
+# print wm
+# result = check_life_points(pos, 3)
+
+# print result
+
+# test movement
+
+#mov = movement(0,0,2,2)
+
+#print mov
+#print caut
+
+# let's test cautious matrix
+caut = cautious_matrix()
+
+# add_flies_to_lifepoints(wreckless_mat,lifepoints)
+#wm = make_wreckless_matrix()
+#lp = add_flies_to_lifepoints(wm,2)
+#cprint lp
