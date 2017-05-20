@@ -113,20 +113,27 @@ def sad_matrix():
 	 	if posistion["puddle"] == True:
 	 		print posistion["text"]
 	 		num_flies = posistion["flies"]
-	 		print num_flies
-	 		break
+	 		print "There are " + str(num_flies) + " flies left."
+	 		
 	 	else:
 	 		print "No Puddle! You do not drown today!"
 	 		
 
-# working on life points
+# working on life points, almost working
+# I need to connect this to the while loop some how so that the user can jump again
+# and lifepoints are kept track of and shown
+# wow this funct is long
 
-	if posistion["puddles"] == True and lifepoints != 0:
+	if posistion["puddle"] == True and lifepoints != 0:
 		lifepoints -= 1
-		print  "you have" + lifepoints + " life points left."
+		print  "you have " + str(lifepoints) + " life points left."
+		print "Jump again!"
+		return lifepoints
 	elif sad_mat["puddle"] == False and lifepoints != 0:
-		print  "you have" + lifepoints + " life points left."
+		print  "you have " + str(lifepoints) + " life points left."
+		print "Jump again!"
 	elif lifepoints == 0:
+		print lifepoints
 		print "game over"
 	else:
 		print "something went wrong" 
