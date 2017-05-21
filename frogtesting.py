@@ -1,7 +1,7 @@
 """ 
-FROGGER@
-Create Your Own Adventure  The Froggeh Story
-this story is mainly made to fill in space and serves the code
+FROGGEH
+cyoa frogger vs frogtesting, frog testing was used to test  making smaller functions and linking them
+
 
 """
 from random import randint 
@@ -18,9 +18,6 @@ def intro_choice():
 	choice = int(choice)
 
 
-	
-	# for choice should  keep it like this or should i separate it into another function?
-	# will this allow me to use this  choice later?
 	return choice
 ###### choice 1
 
@@ -73,8 +70,7 @@ def cautious_matrix():
 ##### choice2
 def make_wreckless_matrix():
 	
-	wreckless_mat = [
-	{"text":"stuff1", "puddle": False, "flies": None},
+	wreckless_mat = [{"text":"stuff1", "puddle": False, "flies": None},
 	{"text": "stuff 2", "puddle": False, "flies": None},
 	{"text":"stuff3", "puddle": False, "flies": None}]
 
@@ -85,18 +81,22 @@ def make_wreckless_matrix():
 	# [{"text":"stuff7", "puddle": False, "flies": None},
 	# {"text": "stuff8", "puddle": False, "flies": None},
 	# {"text":"stuff9", "puddle": False, "flies": None}]
-	
 
-	#for location on matrix
-	for i in range(1):
+	
+	
+		
+
+#def increment(item):#for location on matrix
+	for _ in range(1):
 		x = randint(0,2)
 		#y = randint(0,2)
 		wreckless_mat[x]["puddle"] = True
+
 		#testing
-		print x
+		#print x
 		#print y
-	
-# for flies value
+
+	# for flies value
 	for dictionary in wreckless_mat:
 		dictionary["flies"] = randint(0,3)			 
 	return wreckless_mat
@@ -105,25 +105,25 @@ def make_wreckless_matrix():
 def random_user_jump():
 	#random  square
 	puddle = False
-	lifepoints = 5
+	lifepoints = 3
 	wreckless_mat = make_wreckless_matrix()
 	print "You jump high in the air not sure where you will land"
 	while True:
 		xx  = randint(0,2)
-		# syy = randint(0,2)
+		# yy = randint(0,2)
 		posistion = wreckless_mat[xx]#[yy]
 		jump_again = raw_input("jump again? yes or no ")
 		jump_again.lower()
 		if jump_again == "no" or jump_again == "n":
 			break	
-	 
+	
 	 	if posistion["puddle"] == True:
 	 		#print posistion["text"]
 	 		num_flies = posistion["flies"]
 	 		print "There are " + str(num_flies) + " flies left."
 	 		if num_flies > 0:
-	 			lifepoints = add_flies_to_lifepoints(posistion,lifepoints)	
-	 		lifepoints = check_life_points(posistion,lifepoints)
+	 			lifepoints = add_flies_to_lifepoints(xx,wreckless_mat, lifepoints)	
+	 		lifepoints = check_life_points(posistion,wreckless_mat,lifepoints)
 	 		if lifepoints <= 0:
 	 			break
 	 	else:
@@ -134,36 +134,38 @@ def random_user_jump():
 # I need to connect this to the while loop some how so that the user can jump again
 # and lifepoints are kept track of and shown
 
-def check_life_points(posistion, lifepoints):
+def check_life_points(posistion,wreckless_mat, lifepoints):
 	
 	if posistion["puddle"] == True and lifepoints != 0:
 		lifepoints -= 1
+		print "You've landed in a puddle you start to drown! and lose a life!"
 		print  "you have " + str(lifepoints) + " life points left."
-		print "Jump again!"
-		#return lifepoints
+	
 	elif posistion["puddle"] == False and lifepoints != 0:
 		print  "you have " + str(lifepoints) + " life points left."
-		print "Jump again!"
-	elif lifepoints == 0:
-		#print lifepoints
-		print "game over"
-	else:
-		print "something went wrong" 
-	return lifepoints
-
-def add_flies_to_lifepoints(posistion, lifepoints):
-	# used to test :print "HERE",posistion,lifepoints
 	
 
-	if lifepoints > 5:
-		lifepoints = 5
 	else:
-		for dictionary in wreckless_mat:
-			new_life_points = dictionary["flies"] 
-			new_life_points += lifepoints
+		print "something went wrong" 
+	if lifepoints == 0:
+		print "game over you drowned"
+	return lifepoints
+
+def add_flies_to_lifepoints(posistion,wreckless_mat, lifepoints):
+	# used to test :print "HERE",posistion,lifepoints
+	
+	print "Current health status: ",lifepoints
+
+	new_life_points = wreckless_mat[posistion]["flies"]
+	# for dictionary in wreckless_mat:
+	# 	new_life_points = dictionary["flies"] 
+	lifepoints += new_life_points 
+	print "You've gained " + str(new_life_points) + " healthpoints!"
 
 
-	print lifepoints
+
+
+
 	return lifepoints
 
 """
@@ -177,6 +179,7 @@ not sure how to connect  it.
 
 def calls():
 	display_intro()
+	wreckless_mat = []
 	# if you wanna use another variable inside anothe function this is how
 	choice = intro_choice()
 	# if statement
@@ -189,7 +192,7 @@ def calls():
 		random_user_jump()
 	
 
-wreckless_mat = []
+	
 
 calls()
 
