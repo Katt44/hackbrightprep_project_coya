@@ -74,9 +74,9 @@ def cautious_matrix():
 def make_wreckless_matrix():
 	
 	wreckless_mat = [
-	[{"text":"stuff1", "puddle": False, "flies": None},
+	{"text":"stuff1", "puddle": False, "flies": None},
 	{"text": "stuff 2", "puddle": False, "flies": None},
-	{"text":"stuff3", "puddle": False, "flies": None}],
+	{"text":"stuff3", "puddle": False, "flies": None}]
 
 	# [{"text":"stuff4", "puddle": False, "flies": None},
 	# {"text":"stuff5", "puddle": False, "flies": None},
@@ -85,18 +85,20 @@ def make_wreckless_matrix():
 	# [{"text":"stuff7", "puddle": False, "flies": None},
 	# {"text": "stuff8", "puddle": False, "flies": None},
 	# {"text":"stuff9", "puddle": False, "flies": None}]
-	]
+	
 
 	#for location on matrix
-	for i in range(4):
+	for i in range(1):
 		x = randint(0,2)
-		y = randint(0,2)
-		wreckless_mat[x][y]["puddle"] = True
+		#y = randint(0,2)
+		wreckless_mat[x]["puddle"] = True
+		#testing
+		print x
+		#print y
 	
 # for flies value
-	for lst in wreckless_mat:
-		for element in lst:
-			element["flies"] = randint(0,2)
+	for dictionary in wreckless_mat:
+		dictionary["flies"] = randint(0,3)			 
 	return wreckless_mat
 
 
@@ -108,15 +110,15 @@ def random_user_jump():
 	print "You jump high in the air not sure where you will land"
 	while True:
 		xx  = randint(0,2)
-		yy = randint(0,2)
-		posistion = wreckless_mat[xx][yy]
+		# syy = randint(0,2)
+		posistion = wreckless_mat[xx]#[yy]
 		jump_again = raw_input("jump again? yes or no ")
 		jump_again.lower()
 		if jump_again == "no" or jump_again == "n":
 			break	
 	 
 	 	if posistion["puddle"] == True:
-	 		print posistion["text"]
+	 		#print posistion["text"]
 	 		num_flies = posistion["flies"]
 	 		print "There are " + str(num_flies) + " flies left."
 	 		if num_flies > 0:
@@ -131,8 +133,8 @@ def random_user_jump():
 # working on life points, almost working
 # I need to connect this to the while loop some how so that the user can jump again
 # and lifepoints are kept track of and shown
-# wow this funct is long
-def check_life_points(position, lifepoints):
+
+def check_life_points(posistion, lifepoints):
 	
 	if posistion["puddle"] == True and lifepoints != 0:
 		lifepoints -= 1
@@ -143,23 +145,25 @@ def check_life_points(position, lifepoints):
 		print  "you have " + str(lifepoints) + " life points left."
 		print "Jump again!"
 	elif lifepoints == 0:
-		print lifepoints
+		#print lifepoints
 		print "game over"
 	else:
 		print "something went wrong" 
 	return lifepoints
 
-def add_flies_to_lifepoints(wreckless_mat,lifepoints):
-	#FIXME
-	wreckless_mat = make_wreckless_matrix()
-	#lifepoints += life_point_to_give_back_to_user
+def add_flies_to_lifepoints(posistion, lifepoints):
+	# used to test :print "HERE",posistion,lifepoints
+	
+
 	if lifepoints > 5:
 		lifepoints = 5
-	if wreckless_mat["flies"] >= 1:
-		lifepoints += wreckless_mat["flies"]
+	else:
+		for dictionary in wreckless_mat:
+			new_life_points = dictionary["flies"] 
+			new_life_points += lifepoints
 
 
-
+	print lifepoints
 	return lifepoints
 
 """
@@ -185,9 +189,15 @@ def calls():
 		random_user_jump()
 	
 
+wreckless_mat = []
 
-#calls()
+calls()
 
+
+
+
+
+####### TESTS
 # let's test stuff
 # wm = make_wreckless_matrix()
 # pos = wm[0][0]
@@ -205,9 +215,50 @@ def calls():
 #print caut
 
 # let's test cautious matrix
-caut = cautious_matrix()
+#caut = cautious_matrix()
+# wm = make_wreckless_matrix()
+# wp = add_flies_to_lifepoints(wm,2)
+# add_flies_to_lifepoints(wm,lp)
 
-# add_flies_to_lifepoints(wreckless_mat,lifepoints)
-#wm = make_wreckless_matrix()
-#lp = add_flies_to_lifepoints(wm,2)
-#cprint lp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
