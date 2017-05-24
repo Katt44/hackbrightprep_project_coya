@@ -55,7 +55,7 @@ def cautious_matrix():
 	cautious_mat = [
 	["Cautiously you look around at where you started. Which way hmm", "You wander around kinda lost but still super cool.\n", "you hit the edge and you know the only way to go is down or back the way you came."],
 	["You know your getting closer but really have no idea where you are.", "the lake is somewhere around here", "You know your close and headed the right way."],
-	["At this point your taking your sweet ass time getting but your formidable ego and pride wont let you stop here and now ", "Your so close you can just smell the death and the damp anxiety.", "you found the lake!"]]
+	["At this point your taking your sweet ass time getting but your formidable ego and pride wont let you stop here and now ", "Your so close you can just smell the death and the damp anxiety.", "you found the lake! You get there and your over come with panic. You forgot just how freaking huge the lake is. You just nope you way out of that."]]
 	x = 0
 	y = 0
 	while True:
