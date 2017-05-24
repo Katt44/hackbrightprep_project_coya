@@ -8,12 +8,18 @@ display intro text				- func
 give user first choice			- func
 
 
-Matrix:
+Matrix1:
 
 Be able to hop left, right down
+with content in each square
+
+
+matrix2:
+randomly jump into different spots
+random puddle
+random num of flies
+add num of flies to life
 have a life of 3 points, 
 once life  hits 0 game over trigger ending
 
-happy begining details:
-darker begining details:
 
